@@ -143,6 +143,7 @@ void print_list()
 {
     //this one prints the list
 	string list[size] = {"Espresso","Latte","Cappuccino","Americano"};
+	float costs[size] = {2.5, 3.5, 3.0, 2.0};
 	cout << "               Coffee menu               " << endl;
     cout << "-----------------------------------------" << endl;
 
@@ -150,26 +151,12 @@ void print_list()
     for(int i = 0 ; i < size ; i++) //prints the list 
     {
         count++;
-        if(i == 0)
-        {
-        cout << count << "." << list[i] << " - $2.5" << endl;
-        }
-        else if(i == 1)
-        {
-            cout << count << "." << list[i] << " - $3.5" << endl;
-        }
-        else if(i == 2)
-        {
-                cout << count << "." << list[i] << " - $3.0" << endl;
-        }
-        else if(i == 3)
-        {
-                cout << count << "." << list[i] << " - $2.0" << endl;
-        }
+        cout << count << "." << list[i] <<" $"<<costs[i]<< endl;
     }
     cout << "5.View order" << endl;
     cout << "6.Exit" << endl;
     cout << "7.Clear items"<<endl; 
     cout << "Choose an option: ";
 }
+
 
