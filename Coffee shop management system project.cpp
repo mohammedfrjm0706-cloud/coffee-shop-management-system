@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <windows.h>
 #define size 4
 using namespace std;
 string str;
@@ -13,7 +12,6 @@ int add_price(int);
 void print_product(int);
 string add_to_list(int);
 void print_list(); 
-void loaddingbar();
 int main()
 {
     int choice,checkout_coniform;
@@ -69,7 +67,6 @@ int main()
 				switch(checkout_coniform)  
 				{
 					case 1:  //this is in checkout it makes the user choose between checking out or staying in the program
-					loaddingbar();
 					cout<<"Thanks for visiting goodbye "<<endl;
 					cout<<"Amount paid successfully "<<endl; 
 					flag = false;
@@ -176,15 +173,3 @@ void print_list()
     cout << "Choose an option: ";
 }
 
-void loaddingbar() 
-{   //prints the looding bar while checking out
-	cout<<"Processing please wait "<<endl; 
-	cout<<"["; 
-	for(int i=0 ; i<=10 ; i++) 
-	{
-		Sleep(300); 
-		cout<<"#";
-	}
-	cout<<"] Done! "<<endl; 
-	Sleep(2000);
-}
