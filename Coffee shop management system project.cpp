@@ -7,20 +7,22 @@ float total = 0.0;
 struct checkout
 {
     string name; 
+    string price;
 };
-int add_price(int);
+float add_price(int);
 void print_product(int);
 string add_to_list(int);
 void print_list(); 
 int main()
 {
-    int choice,checkout_coniform;
+    int checkout_coniform;
     float price;
+    int choice;
 	bool flag = true;  
     while(flag)
     {
 	    print_list();
-		cin >> choice; //user enters his choice to choose his product or exit the program            //user cannot leave the store while his cart is not emptyif(choice == 1) //this section checks the user's choice
+		cin>>choice;          
         if(choice==1)
 		{
             int index = 0;
@@ -29,14 +31,14 @@ int main()
             str = add_to_list(index); //adds the chosen item to the list so it can be printed later in checkout
             //this all happens for all other choices execept choice 5 and 6        
         }
-        else if(choice == 2)
+        else if(choice==2)
         {
             int index = 1;
             price = add_price(index);
             print_product(index);
             str = add_to_list(index);   
         }
-        else if(choice == 3)
+        else if(choice==3)
         {
             int index = 2;
             price = add_price(index);
@@ -44,7 +46,7 @@ int main()
             str = add_to_list(index);
        
         }
-        else if(choice == 4)
+        else if(choice==4)
         {
             int index = 3;
             price = add_price(index);
@@ -106,14 +108,14 @@ int main()
 		}
 		else 
 		{
-			cout<<"The choice you have written is not in the list "<<endl; 
+			 cout<<"Your choice is not in the list "<<endl; 
 		}
 		//if the choice written is not in the list
     }
     return 0;
 }
 
-int add_price(int index)  
+float add_price(int index)  
 {
 	float costs[size] = {2.5, 3.5, 3.0, 2.0};//all prices are here
     total += costs[index];//array element is added to total acourding to the index
@@ -129,14 +131,12 @@ void print_product(int index)
 
 string add_to_list(int i) 
 {	//adds the element in the list string for checkout using struct and array
-	checkout menu[size] = {
-        {"Espresso"},
-        {"Latte"},
-        {"Cappuccino"},
-        {"Americano"}
-    };
-	str += menu[i].name+"\n";
+	checkout menu[size] = {{"Espresso","2.5"},{"Latte","3.5"},{"Cappuccino","3.0"},{"Americano","2.0"}}; 
+	str += menu[i].name+" "+"-"+" $"+menu[i].price+"\n";
 	return str;
+	/*if there are two compartments the first one is 
+	reserved for name[] the second one is for cost[] if
+	you put cost[] first, name[] overwrites it making cost array empty*/
 }
 
 void print_list() 
@@ -158,5 +158,3 @@ void print_list()
     cout << "7.Clear items"<<endl; 
     cout << "Choose an option: ";
 }
-
-
