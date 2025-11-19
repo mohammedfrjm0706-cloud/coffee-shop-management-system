@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #define size 4
 using namespace std;
 string str;
+int checkout_count=0;
 float total = 0.0;
 struct checkout
 {
@@ -16,7 +18,7 @@ void print_list();
 int main()
 {
     int checkout_coniform;
-    float price;
+	float price;
     int choice;
 	bool flag = true;  
     while(flag)
@@ -62,7 +64,7 @@ int main()
 			else //if there is an item it print strs which is a string that is saved from every if or else if block
 			{
 				cout<<"------Checkout------"<<endl; 
-				cout<<str<<endl;
+				cout<<str;
 				cout<<"Total price: "<<"$"<<total<<endl;
 				cout<<"Do you want to checkout? press 1 to check out or press 2 to persist: ";
 				cin>>checkout_coniform;
@@ -98,6 +100,7 @@ int main()
 			if(str.empty()==0) //if the user wants to empty his order
 			{ 
 			    total = 0.0; //resets the amount
+				checkout_count=0; 
 				str.clear(); //resets the list
 			    cout<<"Items cleared from your order "<<endl;
 			}
@@ -130,13 +133,15 @@ void print_product(int index)
 }
 
 string add_to_list(int i) 
-{	//adds the element in the list string for checkout using struct and array
+{	
+    //adds the element in the list string for checkout using struct and array
+	checkout_count++;
 	checkout menu[size] = {{"Espresso","2.5"},{"Latte","3.5"},{"Cappuccino","3.0"},{"Americano","2.0"}}; 
-	str += menu[i].name+" "+"-"+" $"+menu[i].price+"\n";
+	stringstream integer;
+	integer<<checkout_count; 
+	string num = integer.str(); 
+	str += num+". "+menu[i].name+" "+"-"+" $"+menu[i].price+"\n";	
 	return str;
-	/*if there are two compartments the first one is 
-	reserved for name[] the second one is for cost[] if
-	you put cost[] first, name[] overwrites it making cost array empty*/
 }
 
 void print_list() 
